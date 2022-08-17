@@ -1,7 +1,7 @@
-﻿{
+{
     "$schema": "https://json.schemastore.org/launchsettings.json",
     "profiles": {
-        "Kestrel": {
+        "Dev": {
             "commandName": "Project",
             "dotnetRunMessages": true,
             "launchBrowser": true,
@@ -10,6 +10,14 @@
             "environmentVariables": {
                 "ASPNETCORE_ENVIRONMENT": "Development"
             }
+        },
+
+        "Prod" : {
+            "commandName": "Project",
+            "environmentVariables": {
+                "ASPNETCORE_ENVIRONMENT" : "Production"
+            },
+            "applicationUrl": "https://localhost:20001"
         }
     }
 }
