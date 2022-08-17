@@ -7,12 +7,12 @@ EXPOSE 20001
 
 FROM mcr.microsoft.com/dotnet/sdk:6.0 AS build
 WORKDIR /src
-COPY ["Facade/Facade.Web/Facade.Web.csproj", "Facade/Facade.Web/"]
-COPY ["Facade/Facade.Infrastructure/Facade.Infrastructure.csproj", "Facade/Facade.Infrastructure/"]
-COPY ["Facade/Facade.Domain/Facade.Domain.csproj", "Facade/Facade.Domain/"]
-RUN dotnet restore "Facade/Facade.Web/Facade.Web.csproj"
-COPY . .
-WORKDIR "/src/Facade/Facade.Web"
+COPY ["Facade/Facade.Web/Facade.Web.csproj", "Facade.Web/"]
+COPY ["Facade/Facade.Infrastructure/Facade.Infrastructure.csproj", "Facade.Infrastructure/"]
+COPY ["Facade/Facade.Domain/Facade.Domain.csproj", "Facade.Domain/"]
+RUN dotnet restore "Facade.Web/Facade.Web.csproj"
+COPY Facade/ .
+WORKDIR "/src/Facade.Web"
 RUN dotnet build "Facade.Web.csproj" -c Release -o /app/build
 
 FROM build AS publish
