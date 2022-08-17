@@ -47,7 +47,11 @@
          networks:
            - name: birzha
          log_driver: json-file
-
          log_options:
              tag: "{{ microservice_name }}"
-       
+         env:
+             ASPNETCORE_HTTPS_PORT: 20001
+             ASPNETCORE_Kestrel__Certificates__Default__Password: 123456789
+             ASPNETCORE_Kestrel__Certificates__Default__Path: /https/aspnetapp.pfx
+         volumes:
+          - /root/.aspnet/https:/https/ 
